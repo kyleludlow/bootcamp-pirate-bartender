@@ -23,11 +23,6 @@ Bartender.prototype.createDrink = function(preferences) {
 };
 
 // create question object
-// var question1 = prompt('Do ye like yer drinks strong?');
-// var question2 = prompt('Do ye like it with a salty tang?');
-// var question3 = prompt('Are ye a lubber who likes it bitter?');
-// var question4 = prompt('Would ye like a bit of sweetness with yer poison?');
-// var question5 = prompt('Are ye one for a fruity finish?');
 
 var Question = function(questionText, flavor, like) {
     this.questionText = questionText;
@@ -38,11 +33,18 @@ var Question = function(questionText, flavor, like) {
 };
 
 Question.prototype.pushPreferences = function() {
-    if (strongOrNo, saltyOrNo == "yes" || "Yes") {
-        // pushPreferences
+    console.log(this.questionText);
+    var userAnswer = prompt(this.questionText);
+    if (userAnswer == ("yes" || "Yes")) {
+        console.log('YES!!!');
+        return this.flavor;
+        //preferences[this.flavor] = true; /// This is where we left off, not tested, need to link to preference object
     } 
-    else if (strongOrNo == "no" || "No") {
+    else if (userAnswer == ("no" || "No")) {
         // pushPreferences
+        console.log('NOOOO!');
+    } else {
+        console.log('Something is wrong');
     }
 };
 
@@ -52,13 +54,38 @@ var bitterQuestion = new Question('Are ye a lubber who likes it bitter?', 'bitte
 var sweetQuestion = new Question('Would ye like a bit of sweetness with yer poison?','sweet');
 var fruityQuestion = new Question('Are ye one for a fruity finish?','fruity');
 
-var strongOrNo = prompt(strongQuestion.questionText);
-var saltyOrNo = prompt(saltyQuestion.questionText);
-var bitterOrNo = prompt(bitterQuestion.questionText);
-var sweetOrNo = prompt(sweetQuestion.questionText);
-var fruityOrNo= prompt(fruityQuestion.questionText);
+var questionArray = [strongQuestion, saltyQuestion]; // bitterQuestion, sweetQuestion, fruityQuestion];
 
-/*
+//// create preferences
+var preferences = function() {
+
+    var preferencesArray = [];
+    //pushes ingredients to pantry based on preference
+    this.strong = false;
+    this.salty = false;
+    this.bitter = false;
+    this.sweet = false;
+    this.fruity = false;
+
+};
+
+preferences.prototype.set = function (key) {
+    this[key] = true;
+}
+
+var drinkPreferences = new preferences();
+for (var i = 0; i < questionArray.length; i++) {
+    var tempFlavor = '';
+    tempFlavor = questionArray[i].pushPreferences();
+    console.log(tempFlavor);
+    if (tempFlavor) {
+        console.log(drinkPreferences);
+        drinkPreferences.set(tempFlavor);
+    }
+}
+console.log(drinkPreferences);
+//strongQuestion.pushPreferences();
+
 
 // create ingredients 
 var ingredients = {
@@ -66,27 +93,12 @@ var ingredients = {
     Salty: [],
 }
 
-// create preferences 
-var preferences = function(this) {
 
-    ////write if else statement to store preferences based on user prompts
-    //pushes ingredients to pantry based on preference
-    this.preferenceStrong =  
-    this.preferenceSalty =
-    this.preferenceSalty =
-    this.preferenceSalty =
-    this.preferenceSalty =
-
-
-    if question1 = yes [
-
-        ]
-}
 
 //create pantry 
 var pantry = {};
 
-*/
+
 
 
 
