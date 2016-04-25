@@ -90,10 +90,6 @@ ingredients.sweet = new drinkIngredients(["sugar cube", "spoonful of honey", "sp
 ingredients.fruity = new drinkIngredients(["slice of orange", "dash of cassis", "cherry on top"]);
 
 
-
-//var drinkPreferenceKeys = Object.keys(drinkPreferences);
-
-//var Ingredients = {};
 var getIngredients = function(data){
     var drinkPreferenceKeys = Object.keys(data);
     var currentDrinkPreferences = [];
