@@ -1,17 +1,20 @@
 
-
 // create bartender object
 var Bartender = function() {
     // calls other methods
-}
-
-//adds createDrink to Bartender that takes parameter of Preference object
-Bartender.prototype.createDrink = function() {
-    console.log('Drink Created');
-    //using the preferences, create a drink using up to 5 random ingredients from the pantry object
-
 };
 
+//adds createDrink to Bartender that takes parameter of Preference object
+Bartender.prototype.makeDrink = function (theDrinks) {
+    var servedDrink = 'Your drink of choice is made of ';
+    for (var i = 0; i < theDrinks.length; i++) {
+        randomNumber = Math.floor(Math.random() * 4);
+        servedDrink += ingredients[theDrinks[i]]['ingredients'][randomNumber] + ' ';  //figure out how to add the proper grammar (commas, periods, amperstamp)
+    }
+    alert(servedDrink);
+};
+
+var bartender = new Bartender();
 
 //constructor function that creates question objects
 var Question = function(questionText, flavor, like) {
@@ -78,33 +81,33 @@ var drinkIngredients = function (ingredients) {
     this.ingredients = ingredients;
 };
 
-var strongIngredients = new drinkIngredients(["glug of rum", "slug of whisky", "splash of gin"]);
-var saltyIngredients = new drinkIngredients(["olive on a stick", "salt-dusted rim", "rasher of bacon"]);
-var bitterIngredients = new drinkIngredients(["shake of bitters", "splash of tonic", "twist of lemon peel"]);
-var sweetIngredients = new drinkIngredients(["sugar cube", "spoonful of honey", "splash of cola"]);
-var fruityIngredients = new drinkIngredients(["slice of orange", "dash of cassis", "cherry on top"]);
+var ingredients = {};
 
-var pantry = [strongIngredients, saltyIngredients, bitterIngredients, sweetIngredients, fruityIngredients];
+ingredients.strong = new drinkIngredients(["glug of rum", "slug of whisky", "splash of gin"]);
+ingredients.salty = new drinkIngredients(["olive on a stick", "salt-dusted rim", "rasher of bacon"]);
+ingredients.bitter = new drinkIngredients(["shake of bitters", "splash of tonic", "twist of lemon peel"]);
+ingredients.sweet = new drinkIngredients(["sugar cube", "spoonful of honey", "splash of cola"]);
+ingredients.fruity = new drinkIngredients(["slice of orange", "dash of cassis", "cherry on top"]);
 
 
-//function findIngredients () {
-//
-//    for (var key in drinkPreferences) {
-//        // skip loop if the property is from prototype
-//        if (!drinkPreferences.hasOwnProperty(key)) continue;
-//
-//        var obj = drinkPreferences[key];
-//        console.log(obj);
-//        for (var prop in obj) {
-//            // skip loop if the property is from prototype
-//            if(!obj.hasOwnProperty(prop)) continue;
-//
-//            if
-//
-//            // your code
-//            alert(prop + " = " + obj[prop]);
-//        }
-//    }
-//}
 
+//var drinkPreferenceKeys = Object.keys(drinkPreferences);
+
+//var Ingredients = {};
+var getIngredients = function(data){
+    var drinkPreferenceKeys = Object.keys(data);
+    var currentDrinkPreferences = [];
+    for (var i = 0; i < drinkPreferenceKeys.length; i++){
+        if (data[drinkPreferenceKeys[i]] == true){
+            currentDrinkPreferences.push(drinkPreferenceKeys[i]);
+        }
+
+    }
+    return currentDrinkPreferences;
+};
+
+theRealDrinkPreference = getIngredients(drinkPreferences);
+
+
+bartender.makeDrink(theRealDrinkPreference);
 
